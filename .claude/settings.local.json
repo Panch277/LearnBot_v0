@@ -29,7 +29,8 @@
       "Bash(pkill -f \"rviz2\")",
       "Bash(kill 34406 27637 27639)",
       "Bash(bash /tmp/launch_rviz.sh)",
-      "Bash(echo \"Script PID: $!\")"
+      "Bash(echo \"Script PID: $!\")",
+      "Bash(pkill -f \"robot_state_publisher|rviz2|pub_joints|launch_rviz|ros2 launch\")"
     ]
   }
 }
