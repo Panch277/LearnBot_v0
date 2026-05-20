@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout *)",
+      "Bash(cp /home/panchpc/ros2_ws/src/robot_description/robot_description/urdf/robot_description.xacro /home/panchpc/pc_ws/articubot_one/description/robot_description.xacro)",
+      "Bash(cp /home/panchpc/ros2_ws/src/robot_description/robot_description/urdf/robot_gazebo.xacro /home/panchpc/pc_ws/articubot_one/description/robot_gazebo.xacro)",
+      "Bash(cp -r /home/panchpc/ros2_ws/src/robot_description/robot_description/meshes /home/panchpc/pc_ws/articubot_one/meshes)",
+      "Bash(find /opt/ros -name \"setup.bash\" 2>/dev/null | sort)",
+      "Read(//opt/ros/**)",
+      "Bash(grep -E \"joint name=|<name>left_wheel|<name>right_wheel\" /tmp/robot.urdf | grep -E \"wheel_joint|ros2_control\")",
+      "Read(//tmp/**)",
+      "Bash(dpkg -l)",
+      "Bash(ls -t /home/panchpc/.ros/log/ | head -3)",
+      "Read(//home/panchpc/.ros/log/**)",
+      "Bash(ls ~/.gazebo/log/ 2>/dev/null | tail -3)",
+      "Read(//home/panchpc/.gazebo/**)",
+      "Bash(sort -t'/' -k6)",
+      "Bash(printenv ROS_DOMAIN_ID)",
+      "Bash(printenv RMW_IMPLEMENTATION)",
+      "Bash(printenv ROS_LOCALHOST_ONLY)",
+      "Bash(kill 27550)",
+      "Bash(ldd /opt/ros/foxy/lib/libgazebo_ros2_control.so)",
+      "Bash(awk '{print $2, $3}')",
+      "Bash(pkill -f gzserver)",
+      "Bash(pkill -f robot_state_publisher)",
+      "Bash(pkill -f rviz2)",
+      "Bash(pkill -f \"robot_state_publisher\")",
+      "Bash(pkill -f \"pub_joints\")",
+      "Bash(pkill -f \"rviz2\")",
+      "Bash(kill 34406 27637 27639)",
+      "Bash(bash /tmp/launch_rviz.sh)",
+      "Bash(echo \"Script PID: $!\")"
+    ]
+  }
+}

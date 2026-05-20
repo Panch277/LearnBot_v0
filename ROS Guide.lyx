@@ -1,0 +1,566 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinelanguage{bash}{
+  morekeywords={sudo,apt,install,cd,mkdir,rm,cp,mv,echo},
+  sensitive=true,
+  morecomment=[l]{\#},
+  morestring=[b]",
+}
+
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  breaklines=true,
+}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+ROS Install Steps
+\end_layout
+
+\begin_layout Subsection*
+Prerequisites 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Set locale
+\series default
+, we have to make sure we have a locale wich supports UTF-8.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+locale  # check for UTF-8
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo apt update && sudo apt install locales
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo locale-gen en_US en_US.UTF-8
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+\end_layout
+
+\begin_layout Plain Layout
+
+export LANG=en_US.UTF-8
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+locale  # verify settings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Setup Sources
+\series default
+, let's add the ROS apt repository to our system.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt install software-properties-common 
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo add-apt-repository universe
+\end_layout
+
+\end_inset
+
+Now add the ROS2 GPG key with apt.
+ GPG keys are to verify the authenticity of packages.
+ "Packages from the ROS repository are trusted and safe to install."
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt update && sudo apt install
+\end_layout
+
+\begin_layout Plain Layout
+
+curl -y sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.k
+ey -o /usr/share/keyrings/ros-archive-keyring.gpg
+\end_layout
+
+\end_inset
+
+Then add the repository to your sources list.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
+rchive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(.
+ /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.
+d/ros2.list > /dev/null
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Reference, 
+\begin_inset CommandInset href
+LatexCommand href
+name "in this link."
+target "https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html#set-locale"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Install ROS 2 packages
+\end_layout
+
+\begin_layout Enumerate
+Update your apt repository caches after setting up the repositories.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt update
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ROS 2 packages are built on frequently updated Ubuntu systems.
+ It is always recommended that you ensure your system is up to date before
+ installing new packages.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt upgrade
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Desktop Install (Recommended): ROS, RViz, demos, tutorials.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt install ros-foxy-desktop python3-argcomplete
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Development tools: Compilers and other tools to build ROS packages
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt install ros-dev-tools
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Environment setup
+\end_layout
+
+\begin_layout Enumerate
+Install git and create an SSH key.
+ Replace my mail with yours.
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ssh-keygen -t ed25519 -C "pancho8barboza@gmail.com" 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Go to GitHub
+\end_layout
+
+\begin_layout Enumerate
+Click on your profile (top right) → Settings
+\end_layout
+
+\begin_layout Enumerate
+Go to SSH and GPG keys
+\end_layout
+
+\begin_layout Enumerate
+Click New SSH key
+\end_layout
+
+\begin_layout Enumerate
+Paste the key and save
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sourcing the setup script
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+source /opt/ros/foxy/setup.bash 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Source your project (optional).
+ When you source the main ROS install (with source /opt/ros/foxy/setup.bash)
+ that makes all the installed packages available but not ones you’ve built
+ yourself.
+ For those you need to source your local workspace (sometimes called an
+ overlay) with source install/setup.bash (called from within the workspace)
+ to make its packages available.
+ It can get a bit confusing but once you are used to it it’s actually a
+ very practical approach for working on multiple projects.
+ The following command works in the project folder:
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+source install/setup.bash
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+A very good option to not source it every time, its to add it to the bashrc
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+gedit ~/.bashrc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Install Colcon
+\end_layout
+
+\begin_layout Standard
+Next we need to install the build tool, colcon (I'm not sure why this isn't
+ included as part of the core ROS installation).
+ All we need to do is run:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt install python3-colcon-common-extensions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a more complete set of colcon instructions, 
+\begin_inset CommandInset href
+LatexCommand href
+name "see this link"
+target "https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Install Gazebo
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt update
+\end_layout
+
+\begin_layout Plain Layout
+
+sudo apt install ros-foxy-gazebo-ros-pkgs 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gazebo tags, an additional to the URDF who tells gazebo some other properties.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Move my robot with Gazeebo
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ros2 launch my_bot launch_sim.launch.py world:=./my_bot/worlds/obstacles.world
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Build with colcon
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+colcon build --symlink-install
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+sudo apt install ros-foxy-xacro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
