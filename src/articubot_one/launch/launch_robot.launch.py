@@ -34,11 +34,10 @@ def generate_launch_description():
     #             )])
     # )
 
-    foxglove = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','foxglove.launch.py'
-                )]), launch_arguments={'use_sim_time': 'false'}.items()
-    )
+    # NOTE: foxglove_bridge is NOT included here on purpose. This launch file runs on the
+    # Pi (ROS2 Foxy), which does not have ros-foxy-foxglove-bridge available. Run
+    # `ros2 launch articubot_one foxglove.launch.py` on the desktop (Humble) instead --
+    # DDS discovery over the network lets it see the Pi's topics without touching the Pi.
 
 
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
@@ -114,7 +113,6 @@ def generate_launch_description():
     return LaunchDescription([
         rsp,
         # joystick,
-        foxglove,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
