@@ -6,7 +6,7 @@
 
   <xacro:arg name="use_ros2_control" default="true"/>
 
-  <xacro:include filename="$(find articubot_one)/description/robot_gazebo.xacro"/>
+  <xacro:include filename="$(find learnbot)/description/robot_gazebo.xacro"/>
 
 
   <link name="base_footprint"/>
@@ -38,7 +38,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/base_link.STL" />
+          filename="package://learnbot/meshes/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -52,7 +52,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/base_link.STL" />
+          filename="package://learnbot/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -78,7 +78,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/l298n_link.STL" />
+          filename="package://learnbot/meshes/l298n_link.STL" />
       </geometry>
       <material
         name="">
@@ -92,7 +92,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/l298n_link.STL" />
+          filename="package://learnbot/meshes/l298n_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -131,7 +131,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/battery_link.STL" />
+          filename="package://learnbot/meshes/battery_link.STL" />
       </geometry>
       <material
         name="">
@@ -145,7 +145,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/battery_link.STL" />
+          filename="package://learnbot/meshes/battery_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -184,7 +184,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/breadboard_link.STL" />
+          filename="package://learnbot/meshes/breadboard_link.STL" />
       </geometry>
       <material
         name="">
@@ -198,7 +198,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/breadboard_link.STL" />
+          filename="package://learnbot/meshes/breadboard_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -237,7 +237,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/caster_wheel_link.STL" />
+          filename="package://learnbot/meshes/caster_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -251,7 +251,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/caster_wheel_link.STL" />
+          filename="package://learnbot/meshes/caster_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -290,7 +290,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/right_motor_link.STL" />
+          filename="package://learnbot/meshes/right_motor_link.STL" />
       </geometry>
       <material
         name="">
@@ -304,7 +304,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/right_motor_link.STL" />
+          filename="package://learnbot/meshes/right_motor_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -343,7 +343,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/right_wheel_link.STL" />
+          filename="package://learnbot/meshes/right_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -357,7 +357,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/right_wheel_link.STL" />
+          filename="package://learnbot/meshes/right_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -402,7 +402,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/left_motor_link.STL" />
+          filename="package://learnbot/meshes/left_motor_link.STL" />
       </geometry>
       <material
         name="">
@@ -416,7 +416,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/left_motor_link.STL" />
+          filename="package://learnbot/meshes/left_motor_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -455,7 +455,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/left_wheel_link.STL" />
+          filename="package://learnbot/meshes/left_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -469,7 +469,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/left_wheel_link.STL" />
+          filename="package://learnbot/meshes/left_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -514,7 +514,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/middle_plate_link.STL" />
+          filename="package://learnbot/meshes/middle_plate_link.STL" />
       </geometry>
       <material
         name="">
@@ -528,7 +528,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/middle_plate_link.STL" />
+          filename="package://learnbot/meshes/middle_plate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -567,7 +567,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/gps_link.STL" />
+          filename="package://learnbot/meshes/gps_link.STL" />
       </geometry>
       <material
         name="">
@@ -581,7 +581,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/gps_link.STL" />
+          filename="package://learnbot/meshes/gps_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -620,7 +620,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/imu_link.STL" />
+          filename="package://learnbot/meshes/imu_link.STL" />
       </geometry>
       <material
         name="">
@@ -634,7 +634,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/imu_link.STL" />
+          filename="package://learnbot/meshes/imu_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -671,7 +671,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/stepdown_transformer_link.STL" />
+          filename="package://learnbot/meshes/stepdown_transformer_link.STL" />
       </geometry>
       <material
         name="">
@@ -685,7 +685,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/stepdown_transformer_link.STL" />
+          filename="package://learnbot/meshes/stepdown_transformer_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -722,7 +722,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/pi_link.STL" />
+          filename="package://learnbot/meshes/pi_link.STL" />
       </geometry>
       <material
         name="">
@@ -736,7 +736,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/pi_link.STL" />
+          filename="package://learnbot/meshes/pi_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -773,7 +773,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/camera_holder_link.STL" />
+          filename="package://learnbot/meshes/camera_holder_link.STL" />
       </geometry>
       <material
         name="">
@@ -787,7 +787,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/camera_holder_link.STL" />
+          filename="package://learnbot/meshes/camera_holder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -826,7 +826,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/pi_camera_link.STL" />
+          filename="package://learnbot/meshes/pi_camera_link.STL" />
       </geometry>
       <material
         name="">
@@ -840,7 +840,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/pi_camera_link.STL" />
+          filename="package://learnbot/meshes/pi_camera_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -879,7 +879,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/upper_plate_link.STL" />
+          filename="package://learnbot/meshes/upper_plate_link.STL" />
       </geometry>
       <material
         name="">
@@ -893,7 +893,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/upper_plate_link.STL" />
+          filename="package://learnbot/meshes/upper_plate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -932,7 +932,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/lidar_link.STL" />
+          filename="package://learnbot/meshes/lidar_link.STL" />
       </geometry>
       <material
         name="">
@@ -946,7 +946,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://articubot_one/meshes/lidar_link.STL" />
+          filename="package://learnbot/meshes/lidar_link.STL" />
       </geometry>
     </collision>
   </link>

@@ -20,7 +20,7 @@ def generate_launch_description():
     # Include the robot_state_publisher launch file, provided by our own package. Force sim time to be enabled
     # !!! MAKE SURE YOU SET THE PACKAGE NAME CORRECTLY !!!
 
-    package_name='articubot_one' #<--- CHANGE ME
+    package_name='learnbot' #<--- CHANGE ME
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -34,10 +34,16 @@ def generate_launch_description():
     #             )])
     # )
 
-    # NOTE: foxglove_bridge is NOT included here on purpose. This launch file runs on the
-    # Pi (ROS2 Foxy), which does not have ros-foxy-foxglove-bridge available. Run
-    # `ros2 launch articubot_one foxglove.launch.py` on the desktop (Humble) instead --
-    # DDS discovery over the network lets it see the Pi's topics without touching the Pi.
+    camera = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','camera.launch.py'
+                )])
+    )
+
+    # NOTE: foxglove_bridge is NOT included here on purpose -- it's launched from the
+    # desktop instead (`ros2 launch learnbot foxglove.launch.py`), so the Pi stays
+    # lean. DDS discovery over the network lets it see the Pi's topics without touching
+    # the Pi.
 
 
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
@@ -113,6 +119,7 @@ def generate_launch_description():
     return LaunchDescription([
         rsp,
         # joystick,
+        camera,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
