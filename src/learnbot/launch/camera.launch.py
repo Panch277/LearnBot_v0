@@ -23,7 +23,9 @@ def generate_launch_description():
             parameters=[{
                 'video_device': '/dev/video0',
                 'image_size': [640, 480],
-                'camera_frame_id': 'camera_link_optical'
+                'camera_frame_id': 'camera_link_optical',
+                'horizontal_flip': True,
+                'vertical_flip': True
                 }]
     )
     ])
