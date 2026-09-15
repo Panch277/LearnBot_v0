@@ -23,7 +23,7 @@
       <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
         <left_joint>left_wheel_joint</left_joint>
         <right_joint>right_wheel_joint</right_joint>
-        <wheel_separation>0.1638</wheel_separation>
+        <wheel_separation>0.205</wheel_separation>
         <wheel_diameter>0.066</wheel_diameter>
         <command_topic>cmd_vel</command_topic>
         <odometry_topic>odom</odometry_topic>
