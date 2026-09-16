@@ -101,8 +101,8 @@ controller_server:
     # Progress checker parameters
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.5
-      movement_time_allowance: 10.0
+      required_movement_radius: 0.3
+      movement_time_allowance: 15.0
     # Goal checker parameters
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
@@ -115,18 +115,23 @@ controller_server:
       debug_trajectory_details: True
       min_vel_x: 0.0
       min_vel_y: 0.0
-      max_vel_x: 0.26
+      max_vel_x: 0.15
       max_vel_y: 0.0
       max_vel_theta: 1.0
       min_speed_xy: 0.0
-      max_speed_xy: 0.26
+      max_speed_xy: 0.15
       min_speed_theta: 0.0
-      # Add high threshold velocity for turtlebot 3 issue.
-      # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
-      acc_lim_x: 2.5
+      # Was 2.5/-2.5 (stock TurtleBot3 Burger template, see the removed link
+      # to a turtlebot3_simulations issue) -- this robot's real motors can't
+      # sustain that; DWB overestimated achievable progress vs. what the
+      # robot could actually do, tripping the progress_checker. 0.15 m/s
+      # matches the dashboard's own known-working teleop speed
+      # (web/src/teleop.ts); acceleration lowered to match, pending real
+      # measurement.
+      acc_lim_x: 1.0
       acc_lim_y: 0.0
       acc_lim_theta: 3.2
-      decel_lim_x: -2.5
+      decel_lim_x: -1.0
       decel_lim_y: 0.0
       decel_lim_theta: -3.2
       vx_samples: 20
@@ -168,7 +173,7 @@ local_costmap:
       width: 3
       height: 3
       resolution: 0.05
-      robot_radius: 0.22
+      robot_radius: 0.12
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -208,7 +213,7 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: True
-      robot_radius: 0.22
+      robot_radius: 0.12
       resolution: 0.05
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
