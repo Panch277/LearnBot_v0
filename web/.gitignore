@@ -1,0 +1,5 @@
+node_modules/
+dist/
+
+# Phase 2: exported URDF + meshes copied in at build time, not hand-authored here.
+public/robot/
